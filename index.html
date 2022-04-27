@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>발표순서 정하기</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+    <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <script>
+        var arrName = [];
+        var LENGTH =arrName.length;
+        var arrOrder = new Array();
+        $(function () {
+             $('#OK').click(function (params) {
+                var count = $('#count').val();
+                console.log(count);
+                $('#members').empty();
+                arrName = [];
+                for(var i=0; i<count;i++){
+                    $('#members').append('<div class="form-group"><input type="text" class="form-control"></div>');
+
+                }
+                $('#order').show();
+
+                $('#result tbody').empty();
+                $('#result').hide();
+
+            });
+
+            $('#order').click(function () {
+                $('#members input').each(function (i, obj) {
+                    var name = $(obj).val();
+                    if(arrName.indexOf(name) >=0){
+                        $(obj).val('');
+                    }else{
+                        arrName.push(name);
+                    }
+                    
+                });
+                console.log(arrName);
+                if(arrName.length != $('#count').val()){
+                    alert('이름을 입력 해주세요');
+                    return;
+                }
+                makeOrder();
+            });
+
+        });
+
+        function makeOrder(){
+            LENGTH =arrName.length;
+            
+           for(var i=0; i<LENGTH; i++){
+                arrOrder[i] = null;
+            }
+            var rn = 0;
+            for(var i=0; i<LENGTH; i++){
+                rn = Math.floor(Math.random() * LENGTH);
+  
+                while(existName(arrName[rn])== true){
+                    rn = Math.floor(Math.random() * LENGTH);
+                }
+                arrOrder[i] = arrName[rn];
+         
+            }
+            $('#result').show();
+            $('#result tbody').empty();
+            for(var i=0; i<arrOrder.length; i++){
+                $('#result').append('<tr><td>'+ +(i+1) + "</td><td> "+ arrOrder[i]+"</td></tr>");
+            }
+            
+        }
+        function existName(name)
+        {
+            for(var i=0; i<arrName.length; i++){
+                if(arrOrder[i] == null)
+                    continue;
+
+                if (arrOrder[i] == name)
+                    return true;
+               
+            }
+            return false;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="form-group">
+            <label for="count">발표인원</label>
+            <input type="number" id="count" class="form-control">
+            
+        </div>
+        
+        <button id="OK" class="btn btn-primary">확인</button><br>
+
+        <div id='members' style="margin-top: 5px;">
+            
+        </div>
+        <button id="order" class="btn btn-primary" style="display: none;">발표순서</button>
+
+        <table class='table' style="display: none;margin-top: 5px;" id="result">
+            <thead>
+                <tr>
+                    <th>순번</th><th>이름</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+
+
+</body>
+</html>
