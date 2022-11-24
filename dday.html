@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            var today = new Date();
+            var finishDay = new Date("2022-12-07");
+            var diff = finishDay.getTime()-today.getTime();
+            var d_day = Math.ceil(diff/(1000*60*60*24));
+            $("#d-day").text(d_day);
+            if(d_day == 0){
+                alert("프로 젝트 결과물 제출하세요!!!")
+            }
+        })
+    </script>
+    <style>
+        .container{
+            width: 960px;
+            margin: 0 auto;
+        }
+        .content{
+            text-align: center;
+        }
+        p{
+            font-size: 2em;
+        }
+        #d-day{
+            font-weight: bolder;
+            color: red;
+            font-size: larger;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <p>프로젝트 종료일까지 <span id="d-day">10</span>일</p>
+            <img src="images/schedule.png" width="80%" height="80%" >    
+        </div>    
+    </div>
+
+</body>
+</html>
