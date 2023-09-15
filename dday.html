@@ -9,7 +9,7 @@
     <script>
         $(function(){
             var today = new Date();
-            var finishDay = new Date("2023-08-29");
+            var finishDay = new Date("2023-10-18");
             var diff = finishDay.getTime()-today.getTime();
             var d_day = Math.ceil(diff/(1000*60*60*24));
             $(".d-day").text(d_day);
@@ -40,9 +40,10 @@
     <div class="container">
         <div class="content">
             <p>프로젝트 종료일까지 <span class="d-day">10</span>일</p>
-            <img src="images/ppt_content2.jpg" width="70%" height="70%" >
-            <!-- <img src="images/schedule.png" width="70%" height="70%" >    -->
-            <!-- <img src="images/ppt_content.png" width="70%" height="70%" >    -->
+            <!-- <img src="images/ppt_content2.jpg" width="70%" height="70%" > -->
+            <img src="images/schedule.png" width="70%" height="70%" >   
+            <p>프로젝트 종료일까지 <span class="d-day">10</span>일</p>
+            <img src="images/ppt_content.png" width="70%" height="70%" >   
         </div>    
     </div>
 
