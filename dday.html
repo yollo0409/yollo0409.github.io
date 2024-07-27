@@ -10,12 +10,20 @@
         $(function(){
             var today = new Date();
             var finishDay = new Date("2024-08-31");
+            var startDay = new Date("2024-08-01");
+            var baseDiff = finishDay.getTime()-startDay.getTime();
+            var baseDay = Math.ceil(baseDiff/(1000*60*60*24));
             var diff = finishDay.getTime()-today.getTime();
             var d_day = Math.ceil(diff/(1000*60*60*24));
+            console.log(baseDay);
             $(".d-day").text(d_day);
             if(d_day == 1){
                 alert("프로 젝트 결과물을 업로드하세요!!!")
             }
+            var rate = Math.round(d_day/baseDay*100);
+            $('#bar').val(rate);
+            $('#progress').text(rate)
+          //  $('#bar').css('background','Orange') ;
         })
     </script>
     <style>
@@ -42,6 +50,8 @@
             <p>프로젝트 종료일까지 <span class="d-day">10</span>일</p>
             <!-- <img src="images/ppt_content2.jpg" width="70%" height="70%" > -->
             <img src="images/schedule.png" width="70%" height="70%" >   
+            <p><progress id="bar" value="0" max="100">
+               </progress> <span id="progress">70 </span>%</p>
             <p>프로젝트 종료일까지 <span class="d-day">10</span>일</p>
             <img src="images/ppt_content.png" width="70%" height="70%" >   
         </div>    
