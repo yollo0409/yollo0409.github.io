@@ -12,13 +12,13 @@
             var finishDay = new Date("2024-08-30");
             var startDay = new Date("2024-08-01");
             var baseDiff = finishDay.getTime()-startDay.getTime();
-            var baseDay = Math.ceil(baseDiff/(1000*60*60*24));
+            var baseDay = Math.ceil(baseDiff/(1000*60*60*24))+1;
             var diff = finishDay.getTime()-today.getTime();
             var d_day = Math.ceil(diff/(1000*60*60*24));
             console.log(baseDay);
             $(".d-day").text(d_day);
             if(d_day == 1){
-                alert("프로 젝트 결과물을 업로드하세요!!!")
+                alert("프로젝트 결과물을 업로드하세요!!!")
             }
             var rate = Math.round(d_day/baseDay*100);
             $('#bar').val(rate);
